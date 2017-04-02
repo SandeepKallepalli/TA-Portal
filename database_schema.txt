@@ -73,4 +73,15 @@ __tablename__=>TAChairsel
 id => primary_key
 rollno => (Integer)foriegn_key(Student.id)
 course_id => (string)foriegn_key(Faculty.id)
- 
+
+##########################################
+FinalTATable:
+        -> This table consists of Final TA's and their courses and get created when student accepts the TAship
+##########################################
+
+__tablename__ => FinalTA
+
+id => primary_key
+rollno => (Integer)foriegn_key(Student.id)
+course_id => (string)foriegn_key(Faculty.id)
+
