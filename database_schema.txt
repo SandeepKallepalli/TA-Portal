@@ -41,3 +41,36 @@ preference1 => (string)foriegn_key(Faculty.id)
 preference2 => (string)foriegn_key(Faculty.id)
 preference3 => (string)foriegn_key(Faculty.id)
 
+##########################################
+Application Table:
+        ->This table is updated when student fills his preferences and used to display the applications for the faculty to select
+#########################################
+
+__tablename__=> Application
+
+id => primary_key
+rollno => (Integer)foriegn_key(Student.id)
+course_id=>(string)foriegn_key(Faculty.id)
+
+########################################
+Nomination Table:
+        ->This table consists of the students and their course whose application is accepted by the faculty
+########################################
+
+__tablename__ => Nominee
+
+id => primary_key
+rollno => (Integer)foriegn_key(Student.id)
+course_id => (string)foriegn_key(Faculty.id)
+
+#########################################
+TAchairselectedTable:
+        ->This Table consists of the nominations which are selected by the TAChair
+########################################## 
+
+__tablename__=>TAChairsel
+
+id => primary_key
+rollno => (Integer)foriegn_key(Student.id)
+course_id => (string)foriegn_key(Faculty.id)
+ 
