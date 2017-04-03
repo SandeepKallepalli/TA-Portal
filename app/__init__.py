@@ -1,6 +1,10 @@
-# import all things from flask
+################################
+# import all things from flask #
+################################
 from flask import *
-# Import SQLAlchemy
+#####################
+# Import SQLAlchemy #
+#####################
 from flask_sqlalchemy import SQLAlchemy
 
 from functools import wraps
@@ -21,11 +25,25 @@ db = SQLAlchemy(app)
 @app.errorhandler(404)
 def not_found(error):
     return render_template('error.html'), 200
-####################
-#add security so as to fin 
-####################
+###########################
+#add security so as to fin#
+###########################
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'user_id' not in session:
+            return jsonify(message="Unauthorized", success=False), 401
+        return f(*args, **kwargs)
+    return decorated
+# Import module using blueprint
+from app.student.comtrollers import mod_student
+from app.faculty.controllers import mod_faculty
 
-
+#################################
+#   Registers the Blueprints    #
+#################################
+app.register_blueprint(mod_student)
+app.register_blueprint(mod_faculty)
 
 #this creates all the tables in the data base 
 db.create_all()
