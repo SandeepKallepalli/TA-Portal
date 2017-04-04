@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class Stuednt(db.Model):
+class Student(db.Model):
     __tablename__ = 'student'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255))

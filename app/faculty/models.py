@@ -18,7 +18,7 @@ class Faculty(db.model):
         self.course_id=course_id
         self.course_name=course_name
         self.course_description=course_description
-        self.passwd=passwd
+        self.passwd=generate_password_hash(passwd)
     def check_password(self, password):
         return check_password_hash(self.password, password)
     def to_dict(self):
@@ -26,10 +26,9 @@ class Faculty(db.model):
             'id':self.id,
             'name':self.name,
             'email':self.email,
-            'course_id':self.course_id
-            'course_name':self.course_name
-            'course_description':self.course_description
-            'passwd':self.passwd
+            'course_id':self.course_id,
+            'course_name':self.course_name,
+            'course_description':self.course_description,
         }
         def __repr__(self):
             return "Faculty<%d> %s" %(self.id,self.name)

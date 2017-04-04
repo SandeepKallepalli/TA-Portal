@@ -15,7 +15,7 @@ def check_login():
     return jsonify(success=False), 401
 
 ## need to modify login based on states 
-@mod_stuednt.route('/login', methods=['POST'])
+@mod_student.route('/login', methods=['POST'])
 def login():
     try:
         email = request.form['email']
