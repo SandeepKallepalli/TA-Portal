@@ -8,7 +8,7 @@ mod_faculty=Blueprint('faculty',__name__,url_prefix='/faculty')
 @mod_faculty.route('/login',methods=['GET'])
 def check_login():
     if 'faculty_id' in session:
-        faculty=Faculty.query.filter(Faculty.id==session['user_id']).first()
+        faculty=Faculty.query.filter(Faculty.id==session['faculty_id']).first()
         return jsonify(success=True,user=user.to_dict())
     return jsonify(success=False),401
 
