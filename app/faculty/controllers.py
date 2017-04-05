@@ -18,7 +18,7 @@ def login():
         email = request.form['email']
         passwd = request.form['passwd']
     except KeyError as e:
-        return jsonify(success=False,message="%s argument not sent to the request" %e.args),400
+        return jsonify(success=False),400
     faculty=Faculty.query.filter(Faculty.email==email).first()
     if user is None or not faculty.check_password(passwd):
         return jsonify(uccess=True,message="Invalid Email/Password"),400
@@ -38,7 +38,7 @@ def create_faculty():
         course_description=request.form['course_description']
         passwd=request.form['passwd']
     except KeyError as e:
-        return jsonify(success=False,message="%s not sent in to the request", %e.args) , 400
+        return jsonify(success=False) , 400
     if '@' not in email:
         return jsonify(success=False,message="Please enter a valid email,email should contain '@'"),400
     prof=Faculty(name,email,course_id,course_name,course_description,passwd)
@@ -52,3 +52,6 @@ def create_faculty():
 def logout():
     session.pop('faculty_id')
     return jsonify(success=True)
+
+
+

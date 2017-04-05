@@ -36,7 +36,7 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 # Import module using blueprint
-from app.student.comtrollers import mod_student
+from app.student.controllers import mod_student
 from app.faculty.controllers import mod_faculty
 
 #################################

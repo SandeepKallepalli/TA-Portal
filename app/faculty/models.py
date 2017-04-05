@@ -2,15 +2,15 @@ from flask_sqlalchemy import SQLAlchemy
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class Faculty(db.model):
+class Faculty(db.Model):
     __tablename__="faculty"
     id=db.Column(db.Integer,primary_key=True,autoincrement=True)
-    name=db.column(db.string(255))
-    email=db.column(db.string(255),unique=True)
-    course_id=db.column(db.string(6),unique=True)
-    course_name=db.column(db.string(255))
-    course_description=db.column(db.string(1000))
-    passwd=db.column(db.string(255))
+    name=db.Column(db.String(255))
+    email=db.Column(db.String(255),unique=True)
+    course_id=db.Column(db.String(6),unique=True)
+    course_name=db.Column(db.String(255))
+    course_description=db.Column(db.String(1000))
+    passwd=db.Column(db.String(255))
 
     def __init__(self,name,email,course_id,course_name,course_description,passwd):
         self.name=name
