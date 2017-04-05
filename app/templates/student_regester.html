@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
 </head>
 <body>
 
@@ -15,30 +16,90 @@
   <form id="student_register">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="text" class="form-control"  placeholder="Enter email">
+      <input type="text" class="form-control" id="student_register_email" placeholder="Enter email">
     </div>
     <div class="form-group">
 	<label for="name">Name:</label>
-	<input type="text" class="form-control"  placeholder="Enter name">
+	<input type="text" class="form-control"  id="student_register_name" placeholder="Enter name">
 	</div>
     <div class="form-group">
 	<label for="roll">RollNo:</label>
-	<input type="text" class="form-control" placeholder="Enter rollnumber">	
+	<input type="text" class="form-control" id="student_register_rollno"placeholder="Enter rollnumber">	
 	</div>
     <div class="form-group">
 	<label for="cgpa">CGPA:</label>
-	<input type="text" class="form-control" placeholder="Enter cgpa">
+	<input type="text" class="form-control" id="student_register_cgpa"placeholder="Enter cgpa">
 	</div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      <input type="password" class="form-control" id="student_register_password" placeholder="Enter password">
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
-    <button type="submit" id="student_register_button" onclick='student_register()' class="btn btn-default">Submit</button>
+    <button type="button" id="student_register_button" class="btn btn-default">Submit</button>
   </form>
 </div>
+<script src="/home/user/TA-Portal-1/app/static/js/vendor/jquery.min.js"></script>
+<script src="/home/user/TA-Portal-1/app/static/js/vendor/bootstrap.min.js"></script>
+<script src="/home/user/TA-Portal-1/app/static/js/vendor/page.js"></script>
+<script src="/home/user/TA-Portal-1/app/static/js/vendor/handlebars.min.js"></script>
+<script src="/home/user/TA-Portal-1/app/static/js/student_register.js"></script>
+<!--<script>
+$("#student_register_button").click(
+	function(){
+	var email = $("#student_register_email").val();
+	var name = $("#student_register_name").val();
+	var password = $("#student_register_password").val();
+	var cgpa = $("#student_register_cgpa").val();
+	var rollno =$("#student_register_rollno").val();		
+	
+	if(length(password) <= 7)
+	alert("password should be atleast 8 charecters long");
+	
+	if(Number(cgpa)<0 && Number(cgpa) >10)
+	alert("Enter a valid cgpa");
+	
+	if(rollno >= 20110000 && rollno <= 20169999)
+	rollno = rollno;
+	else
+	alert("Enter valid roll number");
+	
+
+	callstudent_register_function(email,name,rollno,password,cgpa);
+	
+			}
+	
+	
+	
+	);
+
+
+var callstudent_register_function=function(email,name,rollno,password,cgpa)
+			{
+			 $.ajax({
+                url : 'http://127.0.0.1:5000/student/register',
+                method:"post",
+                data:{
+                        rollno:rollno,
+                        name:name,
+                        email:email,
+			password:password,
+			cgpa:cgpa,
+                        },
+                success:function(){
+                alert("student added");
+
+                },
+                error: function(xhr,status,error){
+                alert("request failed");},
+                }
+        );
+	}
+
+
+
+</script> -->
 
 </body>
 </html>
