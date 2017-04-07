@@ -30,22 +30,16 @@ var callstudent_register_function=function(email,name,rollno,password,cgpa)
 			{
 			 $.ajax({
                 url : 'http://127.0.0.1:8080/student/register',
-                method:"post",
-                data:{
-                        rollno:rollno,
-                        name:name,
-                        email:email,
-			password:password,
-			cgpa:cgpa,
-                        },
-                success:function(student,message){
+                method:"POST",
+		dataType : 'json',
+                data :  $('form').serialize(),
+                success : function(){
                 alert("student added");
-		console.log(student);
-
-                },
-                error: function(xhr,status,error){
+		console.log(responce);
+				},
+                error : function(message){
                 alert("request failed");
-		console.log(error);	
+		console.log(message);	
 				},
                 }
         );

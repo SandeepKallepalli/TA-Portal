@@ -1,4 +1,3 @@
-from flask import Blueprint, request, session, jsonify
 from flask import *
 from sqlalchemy.exc import IntegrityError
 from app import db
@@ -49,7 +48,7 @@ def create_student():
         cgpa  = request.form['cgpa']
         rollno = request.form['rollno']
     except KeyError as e:
-        return jsonify(success=False, message="%s not sent in the request" % e.args), 400
+        return jsonify(success=False, message="%s not sent in the request" % e.args) , 400
 
     if '@' not in email:
         return jsonify(success=False, message="Please enter a valid email"), 400
@@ -59,11 +58,15 @@ def create_student():
     try:
         db.session.commit()
     except IntegrityError as e:
-        return jsonify(success=False, message="This email already exists"), 400
-
-    return jsonify(success=True)
-
+        return jsonify(success=False, message="This email already exists"),400
+    return jsonify(success = True, message ="helllko")
 
 
 
-
+@mod_student.route('/getall' , methods=['GET'])
+def getall():
+    students = Student.query.all()
+    users = []
+    for student in students:
+        users.append(student.to_dict())
+    return jsonify(students= users)

@@ -4,9 +4,10 @@
   <title>Student register </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   
 </head>
 <body>
@@ -16,23 +17,23 @@
   <form id="student_register">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="text" class="form-control" id="student_register_email" placeholder="Enter email">
+      <input type="text" class="form-control" id="student_register_email" name="email" placeholder="Enter email">
     </div>
     <div class="form-group">
 	<label for="name">Name:</label>
-	<input type="text" class="form-control"  id="student_register_name" placeholder="Enter name">
+	<input type="text" class="form-control"  id="student_register_name" name="name" placeholder="Enter name">
 	</div>
     <div class="form-group">
 	<label for="roll">RollNo:</label>
-	<input type="text" class="form-control" id="student_register_rollno"placeholder="Enter rollnumber">	
+	<input type="text" class="form-control" id="student_register_rollno" name="rollno" placeholder="Enter rollnumber">	
 	</div>
     <div class="form-group">
 	<label for="cgpa">CGPA:</label>
-	<input type="text" class="form-control" id="student_register_cgpa"placeholder="Enter cgpa">
+	<input type="text" class="form-control" id="student_register_cgpa" name="cgpa" placeholder="Enter cgpa">
 	</div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="student_register_password" placeholder="Enter password">
+      <input type="password" class="form-control" id="student_register_password" name="password" placeholder="Enter password">
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
@@ -40,11 +41,11 @@
     <button type="button" id="student_register_button" class="btn btn-default">Submit</button>
   </form>
 </div>
-<script src="/home/user/TA-Portal-1/app/static/js/vendor/jquery.min.js"></script>
+<!-- <script src="/home/user/TA-Portal-1/app/static/js/vendor/jquery.min.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/bootstrap.min.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/page.js"></script>
-<script src="/home/user/TA-Portal-1/app/static/js/vendor/handlebars.min.js"></script>
-<script src="/home/user/TA-Portal-1/app/static/js/student_register.js"></script>
+<script src="/home/user/TA-Portal-1/app/static/js/vendor/handlebars.min.js"></script> -->
+<script src="./../static/js/student_register.js"></script>
 <!--<script>
 $("#student_register_button").click(
 	function(){
