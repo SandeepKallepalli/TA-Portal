@@ -48,3 +48,9 @@ app.register_blueprint(mod_faculty)
 #this creates all the tables in the data base 
 db.create_all()
 
+@app.route('/faculty')
+def main():
+    return render_template('faculty_regester.html')
+@app.route('/student')
+def main1():
+    return render_template('student_regester.html')

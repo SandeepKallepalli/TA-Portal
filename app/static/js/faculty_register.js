@@ -43,7 +43,7 @@ var callfaculty_register_function=function(email)
 	dataType : 'json',
 	success : function(){
 		
-			alert("Truue");		
+			alert("True");		
 		},
 	error: function(){
 			alert("false");
