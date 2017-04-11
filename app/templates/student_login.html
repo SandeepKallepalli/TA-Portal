@@ -12,14 +12,14 @@
 
 <div class="container">
   <h2>Login form</h2>
-  <form>
+  <form id="form1" class="form1" name="frm1">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="student_login_email" placeholder="Enter email">
+      <input type="email" class="form-control" id="student_login_email" placeholder="Enter email" name="email">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="student_login_pwd" placeholder="Enter password">
+      <input type="password" class="form-control" id="student_login_pwd" placeholder="Enter password" name="password">
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
@@ -32,10 +32,13 @@
 <br/>
 <div class="container">
 <h1 style="text-align:centre">Click this button to register</h1>
-<form method="GET" action="http://127.0.0.1:8080/student/registerpage">
+<form id="form2" class="form2" method="GET" action="http://127.0.0.1:8080/student/registerpage" name="frm2"> 
 <button type="submit" class="btn btn-default" id="student_register_page">Register page</button>
 </form>
 </div>
+<! -- nfcejdnfcjdjcnk -->
+
+<script src="./../static/js/student_login.js"></script>
 </body>
 </html>
 
