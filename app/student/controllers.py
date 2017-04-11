@@ -31,6 +31,9 @@ def login():
     return jsonify(success=True, student=user.to_dict())
 
 
+@mod_student.route('/registerpage',methods=['GET'])
+def registerpage():
+    return render_template('student_regester.html')
 
 
 @mod_student.route('/logout', methods=['POST'])
