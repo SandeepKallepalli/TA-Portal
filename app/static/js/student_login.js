@@ -3,7 +3,7 @@ $("#student_login_button").click(
 	var email = $("#student_login_email").val();		
 	callstudent_login_function();
 
-	alert("hello");	
+	
 			}
 	
 	
@@ -13,7 +13,7 @@ $("#student_login_button").click(
 
 var callstudent_login_function=function()
 			{
-		alert("hi enter");
+	
 
 		var form1 = $('form[name=frm1]');	
 			 $.ajax({
