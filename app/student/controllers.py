@@ -59,7 +59,7 @@ def create_student():
         db.session.commit()
     except IntegrityError as e:
         return jsonify(success=False, message="This email already exists"),400
-    return jsonify(success = True, message ="helllko")
+    return jsonify(success = True)
 
 
 

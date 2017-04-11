@@ -54,4 +54,11 @@ def logout():
     return jsonify(success=True)
 
 
-
+@mod_faculty.route('/getall',methods=['GET'])
+def getall():
+    fac = Faculty.query.all()
+    users = []
+    for faculty in fac:
+        u = faculty.to_dict()
+        users.append(u)
+    return jsonify(allfaculty = users)
