@@ -50,7 +50,7 @@ db.create_all()
 
 @app.route('/faculty')
 def main():
-    return render_template('faculty_regester.html')
+    return render_template('faculty_login.html')
 @app.route('/student')
 def main1():
-    return render_template('student_regester.html')
+    return render_template('student_login.html')

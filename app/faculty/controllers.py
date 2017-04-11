@@ -1,4 +1,5 @@
 from flask import Blueprint,request,session,jsonify
+from flask import *
 from sqlalchemy.exc import IntegrityError
 from app import db
 from .models import Faculty
@@ -25,7 +26,9 @@ def login():
     session['faculty-id']=faculty.id
     return jsonify(success=False , faculty=faculty.to_dict())
 
-
+@mod_faculty.route('/registerpage',methods=['GET'])
+def register():
+    return render_template('faculty_regester.html')
 
 
 @mod_faculty.route('/register',methods=['POST'])
