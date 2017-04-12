@@ -20,7 +20,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
     except KeyError as e:
-        return render_template('student_login.html',message = "This enter valid credentials")
+        return render_template('student_login.html',message = "Please enter all the  fields")
 
     user = Student.query.filter(Student.email == email).first()
     if user is None or not user.check_password(password):
@@ -39,7 +39,7 @@ def registerpage():
 @mod_student.route('/logout', methods=['POST'])
 def logout():
     session.pop('student_id')
-    return jsonify(success=True)
+    return render_template('student_login.html')
 
 
 @mod_student.route('/register', methods=['POST'])

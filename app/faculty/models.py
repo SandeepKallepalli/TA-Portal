@@ -19,8 +19,8 @@ class Faculty(db.Model):
         self.course_name=course_name
         self.course_description=course_description
         self.passwd=generate_password_hash(passwd)
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
+    def check_password(self, passwd):
+        return check_password_hash(self.passwd, passwd)
     def to_dict(self):
         return {
             'id':self.id,

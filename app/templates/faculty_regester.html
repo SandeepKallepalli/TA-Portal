@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Student register </title>
+  <title>Faculty register</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -14,7 +14,7 @@
 
 <div class="container">
   <h2>Register form</h2>
-  <form id="faculty_register">
+  <form id="faculty_register" method="post" action="/faculty/register" >
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="text" class="form-control" id="faculty_register_email" name="email" placeholder="Enter email">
@@ -43,18 +43,18 @@
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
-    <button type="button" id="faculty_register_button" class="btn btn-default">Submit</button>
+    <input type="submit" id="faculty_register_button" class="btn btn-default" value="Submit">
   </form>
 </div>
 
 <div>
-<p1 id="faculty_register_error" style="text-align:center" ></p1>
+<p1 id="faculty_register_error" style="text-align:center" >{{ message }}</p1>
 </div>
 <!-- <script src="/home/user/TA-Portal-1/app/static/js/vendor/jquery.min.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/bootstrap.min.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/page.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/handlebars.min.js"></script> -->
-<script src="./../static/js/faculty_register.js"></script>
+<!-- <script src="./../static/js/faculty_register.js"></script> -->
 <!--<script>
 $("#student_register_button").click(
 	function(){
