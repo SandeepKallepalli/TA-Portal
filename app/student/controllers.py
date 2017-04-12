@@ -2,6 +2,7 @@ from flask import *
 from sqlalchemy.exc import IntegrityError
 from app import db
 from .models import Student
+from app.faculty.models import *
 
 mod_student = Blueprint('student', __name__, url_prefix='/student')
 
@@ -9,9 +10,9 @@ mod_student = Blueprint('student', __name__, url_prefix='/student')
 def check_login():
     if 'student_id' in session:
         user = Student.query.filter(Student.id == session['student_id']).first()
-        return jsonify(success=True, student=user.to_dict())
+        return render_template('student_home.html', message=user.to_dict())
 
-    return jsonify(success=False), 401
+    return render_template('student_login.html')
 
 ## need to modify login based on states 
 @mod_student.route('/login', methods=['POST'])
@@ -27,8 +28,8 @@ def login():
         return render_template('student_login.html' , message = "Invalid credentials")
 
     session['student_id'] = user.id
-
-    return jsonify(success=True, student=user.to_dict())
+    allcourses = Faculty.query.all()
+    return render_template('student_home.html', message=user.to_dict(), users = allcourses)
 
 
 @mod_student.route('/registerpage',methods=['GET'])
@@ -68,7 +69,7 @@ def create_student():
         db.session.commit()
     except IntegrityError as e:
         return jsonify('regester.html', message="This email or roll number already exists")
-    return jsonify(success = True)
+    return render_template('student_login.html')
 
 
 
