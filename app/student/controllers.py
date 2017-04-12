@@ -20,11 +20,11 @@ def login():
         email = request.form['email']
         password = request.form['password']
     except KeyError as e:
-        return jsonify(success=False, message="%s not sent in the request" % e.args), 400
+        return render_template('student_login.html',message = "This enter valid credentials")
 
     user = Student.query.filter(Student.email == email).first()
     if user is None or not user.check_password(password):
-        return jsonify(success=False, message="Invalid Credentials"), 400
+        return render_template('student_login.html' , message = "Invalid credentials")
 
     session['student_id'] = user.id
 
@@ -51,17 +51,23 @@ def create_student():
         cgpa  = request.form['cgpa']
         rollno = request.form['rollno']
     except KeyError as e:
-        return jsonify(success=False, message="%s not sent in the request" % e.args) , 400
+        return render_template('student_regester.html',message="please fill all the fields")
+
 
     if '@' not in email:
-        return jsonify(success=False, message="Please enter a valid email"), 400
-
+        return render_template('student_regester.html' , message = "please enter valid email address")
+    if  float(cgpa) <= 0 or float(cgpa) >= 10:
+        return render_template('student_regester.html' , message="please enter valid cgpa")  
+    if int(rollno) >= 20169999 or int(rollno) <= 20120000:
+        return render_template('student_regester.html' , message="please enter valid roll number")     
     u = Student(name, email, cgpa , rollno , password)
     db.session.add(u)
+
+
     try:
         db.session.commit()
     except IntegrityError as e:
-        return jsonify(success=False, message="This email already exists"),400
+        return jsonify('regester.html', message="This email or roll number already exists")
     return jsonify(success = True)
 
 

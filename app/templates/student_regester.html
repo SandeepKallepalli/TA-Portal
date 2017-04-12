@@ -14,7 +14,7 @@
 
 <div class="container">
   <h2>Register form</h2>
-  <form id="student_register">
+  <form id="student_register" method="POST" action="/student/register">
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="text" class="form-control" id="student_register_email" name="email" placeholder="Enter email">
@@ -38,14 +38,18 @@
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
-    <button type="button" id="student_register_button" class="btn btn-default">Submit</button>
+    <input type="submit" id="student_register_button" class="btn btn-default" name="Submit">
   </form>
+</div>
+
+<div>
+<h2 style="text-align:centre">{{ message }}</h2>
 </div>
 <!-- <script src="/home/user/TA-Portal-1/app/static/js/vendor/jquery.min.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/bootstrap.min.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/page.js"></script>
 <script src="/home/user/TA-Portal-1/app/static/js/vendor/handlebars.min.js"></script> -->
-<script src="./../static/js/student_register.js"></script>
+<!-- <script src="./../static/js/student_register.js"></script> -->
 <!--<script>
 $("#student_register_button").click(
 	function(){
