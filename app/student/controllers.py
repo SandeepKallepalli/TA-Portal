@@ -80,3 +80,5 @@ def getall():
     for student in students:
         users.append(student.to_dict())
     return jsonify(students= users)
+
+

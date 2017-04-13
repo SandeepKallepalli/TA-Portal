@@ -2,6 +2,6 @@ from flask import *
 from sqlalchemy.exc import IntegrityError
 from app import db
 
-mod_nomination = Blueprint('nomination', __name__, url_prefix='/nomination')
+mod_preferences = Blueprint('preferences', __name__, url_prefix='/preferences')
 
 
