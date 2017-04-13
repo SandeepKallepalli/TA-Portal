@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home page </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <style>
+        div.s{
+        background-color:lightblue;
+        text-align:center;
+        }
+        table{
+        width:100%;
+        background-color:lightblue;
+        }
+        table,th,td{
+        border:1px solid black;
+        border-collapse: collapse;
+        }
+        th,td{
+        text-align:center;
+        }
+        tr{
+        background-color:"#2F4F4F";
+        }
+</style>
+
+</head>
+<body style="background-color:grey">
+<h1 style="text-align:center" > Your HomePage</h1>
+<marquee direction="right" style="color:red"><h4>Hi {{ message.name }}</h4></marquee>
+
+  
+<h1 style="text-align:center">Your selected preferences are</h1>
+<br/>
+<br/>
+<label>
+
+
+
+<div class="container">
+<h3 style="color:blue">logout button</h3>
+<form method="POST" action="/student/logout">
+<input type="submit" value="Logout" class="btn btn-default">
+</form>
+</div>
+
+</body>
+</html>
+
