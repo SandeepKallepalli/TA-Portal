@@ -1,9 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 from app import db
+from app import student
+from app import faculty
 
 class Application(db.Model):
     __tablename__= 'application'
-    id=db.column(db.Integer,primary_key=True,autoincrement=True)	
+    id=db.column(db.Integer,primary_key=True,autoincrement=True)
     student_id=db.column(db.Integer,db.ForeignKey('student.id'))
     faculty_id=db.column(db.Integer,db.ForeignKey('faculty.id'))
 
