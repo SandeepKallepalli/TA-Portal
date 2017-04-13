@@ -68,7 +68,7 @@ def create_student():
     try:
         db.session.commit()
     except IntegrityError as e:
-        return jsonify('regester.html', message="This email or roll number already exists")
+        return render_template('student_regester.html', message="This email or roll number already exists")
     return render_template('student_login.html')
 
 
