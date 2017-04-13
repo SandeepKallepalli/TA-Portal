@@ -1,4 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask import *
+from app.student.models import *
+from app.faculty.models import *
 from app import db
 
 class Nomiantion(db.Model):

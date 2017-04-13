@@ -1,5 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask import *
 from app import db
+from app.student.models import *
+from app.faculty.models import *
 
 class Preference(db.Model):
     __tablename__= 'preference'
