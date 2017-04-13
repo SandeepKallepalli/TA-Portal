@@ -1,8 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from app import db
-from app import student,faculty
-from student import models
-from faculty import models
 
 class AcceptedApplication(db.model):
     __tablename__= 'acceptedapplication'

@@ -1,7 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from app import db
-from app import student
-from app import faculty
 
 class Application(db.Model):
     __tablename__= 'application'
