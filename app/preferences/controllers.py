@@ -6,9 +6,9 @@ from  app.faculty.models import *
 from  app.student.models import *
 from  app.application.models import *
 
-mod_preferences = Blueprint('preferences', __name__, url_prefix='/preferences')
+mod_preferences = Blueprint('preferences', __name__ , url_prefix='/preferences')
 
-@mod_preferences.route('/addpreference',method=['POST'])
+@app.route('/preferences/addpreference',method=['POST'])
 def create_preference():
     try:
         course1_id=request.form['course1_id']
@@ -16,7 +16,7 @@ def create_preference():
         course3_id=request.form['course3_id']
     except KeyError as e:
         return render_template('student_home.html',message="please fill all the preferences")
-    stud=Student.query.filter(Student.id==session['student_id'])
+    stud=Student.query.filter(Student.id==session['student_id']).first()
     preference1=Faculty.query.filter(Faculty.course_id==course1_id).first()
     preference2=Faculty.query.filter(Faculty.course_id==course2_id).first()
     preference3=Faculty.query.filter(Faculty.course_id==course3_id).first()
@@ -33,6 +33,5 @@ def create_preference():
     except IntegrityError as e:
         return render_template('student_home.html', message="Sorry Request Failed")
     return render_template('student_home2.html', student=stud , faculty1=preference1 , faculty2=preference2 , faculty3=preference3 )
-
 
 

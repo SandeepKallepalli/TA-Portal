@@ -38,10 +38,6 @@ def requires_auth(f):
 # Import module using blueprint
 from app.student.controllers import mod_student
 from app.faculty.controllers import mod_faculty
-from app.application.controllers import mod_application
-from app.nomination.controllers import mod_nomination
-from app.finalta.controllers import mod_finalta
-from app.preferences.controllers import mod_preferences
 #################################
 #   Registers the Blueprints    #
 #################################

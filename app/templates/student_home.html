@@ -67,23 +67,23 @@
 <h1 style="text-align:center">select your preferences here</h1>
 
 <div class="container">
-<form id="form3" method = "POST" action="/preferences">
+<form id="form3" method = "POST" action="/student/addpreference">
 <label>Preferense-1:</label>
 <select class="selectname" name="course1_id">
 {% for user in users %}
-<option value="user.course_id">{{ user.course_id }}</option>
+<option value="{{ user.course_id }}">{{ user.course_id }}</option>
 {% endfor %}
 </select>
 <label>Preference-2:</label>
 <select name="course2_id">
 {% for user in users %}
-<option value="user.course_id">{{ user.course_id }}</option>
+<option value="{{ user.course_id }}">{{ user.course_id }}</option>
 {% endfor %}
 </select>
 <label>Preference-3</label>
 <select name="course3_id">
 {% for user in users %}
-<option value="user.course_id">{{ user.course_id }}</option>
+<option value="{{ user.course_id }}">{{ user.course_id }}</option>
 {% endfor %}
 </select>
 <input type="submit" value="Submit" class="btn btn-default">
