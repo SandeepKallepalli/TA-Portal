@@ -1,12 +1,13 @@
 from flask import Blueprint,request,session,jsonify
 from flask import *
+from sqlalchemy import *
 from sqlalchemy.exc import IntegrityError
 from app import db
 from .models import Faculty
 from app.application.models import *
 from app.nomination.models import *
 from app.finalta.models import *
-
+from app.student.models import *
 mod_faculty=Blueprint('faculty',__name__,url_prefix='/faculty')
 
 @mod_faculty.route('/login',methods=['GET'])
@@ -96,3 +97,29 @@ def getall():
         u = faculty.to_dict()
         users.append(u)
     return jsonify(allfaculty = users)
+
+@mod_faculty.route('/add' , methods=['POST'])
+def add():
+        student_roll = request.form['roll']
+        facultyid = session['faculty_id']
+        student1 = Student.query.filter(Student.rollno == student_roll).first()
+        nom = Nomination(student1.id , facultyid)
+        app = Application.query.filter(and_(Application.student_id == student1.id,Application.faculty_id == facultyid)).first()
+        db.session.add(nom)
+        db.session.delete(app)
+        db.session.commit()
+        applic=Application.query.filter(Application.faculty_id==session['faculty_id']).all()
+        applications = []
+        for user in applic:
+            applications.append(Student.query.filter(Student.id==user.student_id).first())
+        nominees = Nomination.query.filter(Nomination.faculty_id == facultyid).all()
+        nominations=[]
+        for user in nominees:
+            nominations.append(Student.query.filter(Student.id==user.student_id).first())
+        final=FinalTA.query.filter(FinalTA.faculty_id==session['faculty_id']).all()
+        finaltas = []
+        for user in final:
+            finaltas.append(Student.query.filter(Student.id==user.student_id).first())
+        return render_template('faculty_home1.html' , message='successful' , applications=applications , nominations=nominations , finaltas=finaltas)
+    
+        

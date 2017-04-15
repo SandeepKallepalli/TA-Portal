@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    input[type="text"]:disabled {
+    input[type="text"]:readonly {
         border : 0 ;
             }
   </style>
@@ -27,8 +27,8 @@
             <tr>
                 <td>{{ application.name }} </td>
                 <td>{{ application.cgpa }} </td>
-                <form method= "POST" action="/nomination/add">
-                    <td><input type="text" name="roll" id="disabled" value="{{ application.rollno }}" disabled></td>
+                <form method= "POST" action="/faculty/add">
+                    <td><input type="text" name="roll" value="{{ application.rollno }}" id="disabled" readonly></td>
                     <td><input type="submit" value="Submit" class="btn btn-default"></td>
                 </form>
             </tr>
