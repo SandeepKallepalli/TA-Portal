@@ -5,3 +5,5 @@ from .models import *
 mod_nomination = Blueprint('nomination', __name__, url_prefix='/nomination')
 
 
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TAchair login </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login form</h2>
+  <form id="form1" class="form1" name="frm1" method="POST" action="/tachair/login">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="tachair_login_email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="tachair_login_pwd" placeholder="Enter password" name="password">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <input type="submit" name="Submit">
+  </form>
+</div>
+<div>
+<h2 style="text-align:centre">{{ message }}</h2>
+</div>
+<br/>
+<br/>
+<br/>
+
+
+
+<!-- mancjnd -->
+<!-- <script src="./../static/js/student_login.js"></script> -->
+<!-- bfhebkf -->
+
+</body>
+</html>
+

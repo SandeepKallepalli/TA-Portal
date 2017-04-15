@@ -38,12 +38,13 @@ def requires_auth(f):
 # Import module using blueprint
 from app.student.controllers import mod_student
 from app.faculty.controllers import mod_faculty
+from app.tachair.controllers import mod_tachair
 #################################
 #   Registers the Blueprints    #
 #################################
 app.register_blueprint(mod_student)
 app.register_blueprint(mod_faculty)
-
+app.register_blueprint(mod_tachair)
 #this creates all the tables in the data base 
 db.create_all()
 
@@ -53,3 +54,6 @@ def main():
 @app.route('/student')
 def main1():
     return render_template('student_login.html')
+@app.route('/tachair')
+def main3():
+    return render_template('tachair_login.html')
