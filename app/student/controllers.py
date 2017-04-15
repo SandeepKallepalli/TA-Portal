@@ -4,6 +4,7 @@ from app import db
 from .models import Student
 from app.faculty.models import *
 from app.preferences.models import *
+from app.application.models import *
 mod_student = Blueprint('student', __name__, url_prefix='/student')
 
 @mod_student.route('/login', methods=['GET'])
@@ -96,15 +97,15 @@ def create_preference():
     preference2=Faculty.query.filter(Faculty.course_id==course2_id).first()
     preference3=Faculty.query.filter(Faculty.course_id==course3_id).first()
     pref=Preference(session['student_id'],preference1.id,preference2.id,preference3.id)
-    #app1=Application(session['student_id'],preferences1.id)
-    #app2=Application(session['student_id'],preferences2.id)
-    #app3=Application(session['student_id'],preferences3.id)
+    app1=Application(session['student_id'],preference1.id)
+    app2=Application(session['student_id'],preference2.id)
+    app3=Application(session['student_id'],preference3.id)
     
     try:
         db.session.add(pref)
-      #  db.session.add(app1)
-      #  db.session.add(app2)
-       # db.session.add(app3)
+        db.session.add(app1)
+        db.session.add(app2)
+        db.session.add(app3)
         db.session.commit()
     except IntegrityError as e:
         return render_template('student_home.html', message="Sorry Request Failed")

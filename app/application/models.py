@@ -10,7 +10,7 @@ class Application(db.Model):
     student_id=db.Column(db.Integer,db.ForeignKey('student.id'))
     faculty_id=db.Column(db.Integer,db.ForeignKey('faculty.id'))
 
-    def __init__(self,student_id,course_id):
+    def __init__(self,student_id,faculty_id):
         self.student_id=student_id
         self.faculty_id=faculty_id
 

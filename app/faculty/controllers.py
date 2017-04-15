@@ -3,6 +3,9 @@ from flask import *
 from sqlalchemy.exc import IntegrityError
 from app import db
 from .models import Faculty
+from app.application.models import *
+from app.nomination.models import *
+from app.finalta.models import *
 
 mod_faculty=Blueprint('faculty',__name__,url_prefix='/faculty')
 
@@ -10,8 +13,20 @@ mod_faculty=Blueprint('faculty',__name__,url_prefix='/faculty')
 def check_login():
     if 'faculty_id' in session:
         faculty=Faculty.query.filter(Faculty.id==session['faculty_id']).first()
-        return jsonify(success=True,user=user.to_dict())
-    return jsonify(success=False),401
+        applications = []
+        applic=Application.query.filter(Application.faculty_id==session['faculty_id']).all()
+        for user in applic:
+            applications.append(Student.query.filter(Student.id==user.student_id).first())
+        nominees=Nomination.query.filter(Nomination.faculty_id==session['faculty_id']).all()
+        nominations=[]
+        for user in nominees:
+            nominations.append(Student.query.filter(Student.id==user.student_id).first())
+        final=FinalTA.query.filter(FinalTA.faculty_id==session['faculty_id']).all()
+        finaltas=[]
+        for user in final:
+            finaltas.append(Student.query.filter(Student.id==user.student_id).first())
+        return render_template('faculty_home1.html' , message='successful' , applications=applications , nominations=nominations , finaltas=finaltas)
+    return render_template('faculty_login.html')
 
 @mod_faculty.route('/login',methods=['POST'])
 def login():
@@ -23,9 +38,20 @@ def login():
     faculty=Faculty.query.filter(Faculty.email==email).first()
     if faculty is None or not faculty.check_password(passwd):
         return render_template('faculty_login.html',  message="Invalid Email/Password")
-    session['faculty-id']=faculty.id
-    return jsonify(success=True , faculty=faculty.to_dict())
-
+    session['faculty_id']=faculty.id
+    applic=Application.query.filter(Application.faculty_id==session['faculty_id']).all()
+    applications=[]
+    for user in applic:
+        applications.append(Student.query.filter(Student.id==user.student_id).first())
+    nominees=Nomination.query.filter(Nomination.faculty_id==session['faculty_id']).all()
+    nominations=[]
+    for user in nominees:
+        nominations.append(Student.query.filter(Student.id==user.student_id).first())
+    final=FinalTA.query.filter(FinalTA.faculty_id==session['faculty_id']).all()
+    finaltas=[]
+    for user in final:
+        finaltas.append(Student.query.filter(Student.id==user.student_id).first())
+    return render_template('faculty_home1.html' , message='successful' , applications=applications , nominations=nominations , finaltas=finaltas)
 @mod_faculty.route('/registerpage',methods=['GET'])
 def register():
     return render_template('faculty_regester.html')

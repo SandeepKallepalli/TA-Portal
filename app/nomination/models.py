@@ -4,7 +4,7 @@ from app.student.models import *
 from app.faculty.models import *
 from app import db
 
-class Nomiantion(db.Model):
+class Nomination(db.Model):
     __tablename__= 'nomination'
     id=db.Column(db.Integer,primary_key=True,autoincrement=True)	
     student_id=db.Column(db.Integer,db.ForeignKey('student.id'))
