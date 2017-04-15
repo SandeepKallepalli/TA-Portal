@@ -8,17 +8,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <style>
+        body{
+            background-image:url("logo.gif");
+            height : 50%;
+            background-position:center;
+            background-repeat:no-repeat,repeat;
+        }
         div.s{
         background-color:lightblue;
         text-align:center;
+        margin:auto;
+        border:3px solid #73AD21;
+        width:75%
         }
         table{
         width:100%;
-        background-color:lightblue;
+        background-color:white;
+        color:blue;
         }
         table,th,td{
-        border:1px solid black;
-        border-collapse: collapse;
+        border:1px solid black;        
         }
         th,td{
         text-align:center;
@@ -29,12 +38,12 @@
 </style>
 
 </head>
-<body>
-<h1 style="text-align:center,color:blue" > Your HomePage</h1>
+<body >
+<h1 style="text-align:center"> Your HomePage</h1>
 <marquee direction="right" style="color:red"><h4>Hi {{ message.name }}</h4></marquee>
 
 
-<div class="s">
+<div class="s" >
     <h2 style="text-align:center">List of all courses available for Taship</h2>
 
 <table>
@@ -60,37 +69,52 @@
 </div>
 
 
-<h1 style="text-align:center,color:red">Enter all your preferences at a single time</h1>
+<h4 style="text-align:center,color:red"><strong>Note :Enter all your preferences only once</strong></h4>
 <br/>
 <br/>
 <br/>
-<h1 style="text-align:center">select your preferences here</h1>
+<h1 style="background-color:green;color:white">Select your preferences here</h1>
+</br>
+</br>
 
 <div class="container">
+<<<<<<< HEAD
 <form id="form3" method = "POST" action="/student/addpreference">
+=======
+<form id="form3" method = "POST" action="/preferences">
+<ul>
+<li>
+>>>>>>> 6fa0878ae4af7eca727ed87b9a5f7140c1982e0c
 <label>Preferense-1:</label>
+</br>
 <select class="selectname" name="course1_id">
 {% for user in users %}
 <option value="{{ user.course_id }}">{{ user.course_id }}</option>
 {% endfor %}
-</select>
+</select></li>
+</br>
+<li>
 <label>Preference-2:</label>
-<select name="course2_id">
+</br><select name="course2_id">
 {% for user in users %}
 <option value="{{ user.course_id }}">{{ user.course_id }}</option>
 {% endfor %}
 </select>
+</li>
+</br>
+<li>
 <label>Preference-3</label>
+</br>
 <select name="course3_id">
 {% for user in users %}
 <option value="{{ user.course_id }}">{{ user.course_id }}</option>
 {% endfor %}
 </select>
+</li>
+</br>
 <input type="submit" value="Submit" class="btn btn-default">
 </form>
 </div>
-
-
 <div class="container">
 <h3 style="color:blue">logout button</h3>
 <form method="POST" action="/student/logout">
