@@ -114,6 +114,7 @@ table#t01 th {
 
 <div class="container" id="status">
 <h2 class="heads">Presently your status is :</h2>
+<h1> {{ message }} </h1>
 <table id="t01">
 <tr>
 <th>preference order</th>
@@ -121,25 +122,60 @@ table#t01 th {
 <th>course_id</th>
 <th>professor_name</th>
 <th>status</th>
+<th>Click to take course</th>
 </tr>
 <tr>
 <td>preference-1</td>
-<td>{{ faculty1.name }}</td>
-<td>{{ faculty1.course_id }}</td>
 <td>{{ faculty1.course_name }}</td>
-<td>{{ faculty1.course_description }}</td>
+{% if message1=="Accepted" %}
+<form method="POST" action="/student/addfinalta">
+<td><input type="text" value="{{ faculty1.course_id }}" name="faculty_id" readonly></td>
+    <td>{{ faculty1.name }}</td>
+    <td>{{ message1 }}</td>
+    <td>
+        <input type="submit" name="submit" value="Take course" class="btn btn-default">
+    </td>
+</form>
+{% else %}
+<td>{{ faculty1.course_id }} </td>
+<td>{{ faculty1.name }}</td>
+<td>{{ message1 }}</td>
+{% endif %}
 </tr>
+<tr>
 <td>preference-2</td>
-<td>{{ faculty2.name }}</td>
-<td>{{ faculty2.course_id }}</td>
 <td>{{ faculty2.course_name }}</td>
-<td>{{ faculty2.course_description }}</td>
+{% if message2=="Accepted" %}
+<form method="POST" action="/student/addfinalta">
+<td><input type="text" value="{{ faculty2.course_id }}" name="faculty_id" readonly></td>
+    <td>{{ faculty2.name }}</td>
+    <td>{{ message2 }}</td>
+    <td>
+        <input type="submit" name="submit" value="Take course" class="btn btn-default">
+    </td>
+</form>
+{% else %}
+<td>{{ faculty2.course_id }} </td>
+<td>{{ faculty2.name }}</td>
+<td>{{ message2 }}</td>
+{% endif %}
 </tr>
+<tr>
 <td>preference-3</td>
-<td>{{ faculty3.name }}</td>
-<td>{{ faculty3.course_id }}</td>
 <td>{{ faculty3.course_name }}</td>
-<td>{{ faculty3.course_description }}</td>
+<td>{{ faculty3.name }}</td>
+{% if message3=="Accepted" %}
+<form method="POST" action="/student/addfinalta">
+    <td><input type="text" value="{{ faculty3.course_id }}" name="faculty_id" readonly></td>
+    <td>{{ message3 }}</td>
+    <td>
+        <input type="submit" name="submit" value="Take course" class="btn btn-default">
+    </td>
+</form>
+{% else %}
+<td>{{ faculty3.course_id }} </td>
+<td>{{ message3 }}</td>
+{% endif %}
 </tr>
 
 </table>
@@ -148,11 +184,11 @@ table#t01 th {
 
 
 <div class="container" id="contact">
-<h4 class="heads">If you have any queries contact us by email <a href="email of portal admin">email</a> </h4>
+<h4 class="heads">If you have any queries contact us by email  </h4>
 </div>
 
 <div class="container" id="about">
-<h5 class="heads">This portal is copyrighted  to iiith</h5>
+<h5 class="heads">This portal is copyrighted solely to sandeep.kallepalli</h5>
 </div>
 
 <div id="logout" class="container">
