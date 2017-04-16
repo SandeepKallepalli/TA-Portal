@@ -57,3 +57,6 @@ def main1():
 @app.route('/tachair')
 def main3():
     return render_template('tachair_login.html')
+@app.route('/')
+def main4():
+    return render_template('home.html')
