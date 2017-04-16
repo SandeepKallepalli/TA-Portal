@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
   <title>TAchair login </title>
+	<style>
+	.para{
+	text-align : center;
+	color : blue;
+		}
+	</style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,9 +15,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1 style="text-align:center"> TA-CHAIR </h1>
+	<div class="container">
+	<h1 class="para">Tachair Login page</h1>
+	</div>    
+
 <div class="container">
-  <h2>Login form</h2>
   <form id="Tachair_login" method="POST" action="/tachair/login">
     <div class="form-group">
       <label for="email">Email:</label>

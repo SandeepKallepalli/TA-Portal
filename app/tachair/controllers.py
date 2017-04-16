@@ -14,7 +14,24 @@ mod_tachair = Blueprint('tachair', __name__, url_prefix='/tachair')
 def check_login():
     if 'tachair_id' in session:
         user = Tachair.query.filter(Tachair.id == session['tachair_id']).first()
-        return render_template('tachair_home.html', user = user)
+        alls = []
+        nominations = Nomination.query.all()
+        for nomi in nominations:
+            rel = []
+            student1 =Student.query.filter(Student.id == nomi.student_id).first()
+            faculti1=Faculty.query.filter(Faculty.id == nomi.faculty_id).first()
+            king = AcceptedApplication.query.filter(and_(AcceptedApplication.student_id == student1.id, AcceptedApplication.faculty_id == faculti1.id)).all()
+            dicts = {
+                'roll':student1.rollno,
+                'name':student1.name,
+                'cgpa' : student1.cgpa,
+                'coursename':faculti1.course_name,
+                'courseid': faculti1.course_id,
+                }
+            if king == []:
+                alls.append(dicts)
+
+        return render_template('tachair_home.html', user = user , alls = alls)
 
     return render_template('tachair_login.html' , message = "please login first")
 
@@ -104,5 +121,5 @@ def acc():
                 alls.append(dicts)
         return render_template('tachair_home.html', alls =alls , user = user)
     except:
-        return render_template('tachair_login.html' , message="sorry for inconvineance please login again")
+        return render_template('tachair_login.html' , message="sorry for inconvineance please login again and try")
         
