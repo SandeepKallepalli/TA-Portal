@@ -4,7 +4,7 @@ from flask import *
 from app.student.models import *
 from app.faculty.models import *
 
-class AcceptedApplication(db.model):
+class AcceptedApplication(db.Model):
     __tablename__= 'acceptedapplication'
     id=db.Column(db.Integer,primary_key=True,autoincrement=True)	
     student_id=db.Column(db.Integer,db.ForeignKey('student.id'))
