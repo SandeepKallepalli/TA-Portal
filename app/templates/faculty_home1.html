@@ -8,19 +8,34 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    input[type="text"]:readonly {
+    input[type="text"] {
         border : 0 ;
             }
+table{
+        width:100%;
+        background-color:white;
+        color:blue;
+        }
+        table,th,td{
+        border:1px solid black;        
+        }
+        th,td{
+        text-align:center;
+        }
+        tr{
+        background-color:"#2F4F4F";
+        }
   </style>
 </head>
-<body>
-    <h1> This is your Homepage </h1>
+<body style="background-color:powderblue">
+    <h1 style="text-align:center"> This is your Homepage </h1>
     <h3>These are the applications to your course </h3>
     <table>
         <thead>
             <th>Student Name </th>
             <th>Student CGPA </th>
             <th>Roll No </th>
+            <th>submit</th>
         </thead>
         <tbody>
             {% for application in applications %}
