@@ -58,7 +58,7 @@ def login():
     taship=FinalTA.query.filter(FinalTA.student_id==session['student_id']).all()
     if taship != []:
         faculty=Faculty.query.filter(Faculty.id==taship[0].faculty_id).first()
-        return render_template('student_home3.html' , faculty=faculty)
+        return render_template('student_final.html' , faculty=faculty)
     allcourses = Faculty.query.all()
     pref=Preference.query.filter(Preference.student_id==session['student_id']).all()
     if pref==[]:
@@ -198,6 +198,6 @@ def create_finalta():
         db.session.commit()
     except IntegrityError as e:
         return render_template('student_home2.html', message="Request Failed" , student=user , faculty1=preference1 , faculty2=preference2 , faculty3=preference3 ,message1=message1 , message2=message2 , message3=message3)
-    return render_template('student_home3.html',faculty=Faculty.query.filter(Faculty.id==faculty_id).first())   
+    return render_template('student_final.html',faculty=Faculty.query.filter(Faculty.id==faculty_id).first())   
         
 

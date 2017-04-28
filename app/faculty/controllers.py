@@ -81,7 +81,7 @@ def create_faculty():
         db.session.commit()
     except IntegrityError as e:
         return render_template('faculty_regester.html',message="This email or course-id already exists. Pls try a new one") 
-    return jsonify(success=True)
+    return render_template('faculty_login.html' , message = "You have been successfully regetered please login to see your account")
 
 @mod_faculty.route('/logout',methods=['POST'])
 def logout():
