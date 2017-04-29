@@ -40,7 +40,7 @@ def check_login_student():
         return render_template('student_home2.html', student=user , faculty1=preference1 , faculty2=preference2 , faculty3=preference3 ,message1=message1 , message2=message2 , message3=message3)
     return render_template('student_login.html')
 
-## need to modify login based on states 
+ 
 @mod_student.route('', methods=['POST'])
 def login():
     try:
@@ -119,7 +119,6 @@ def create_student():
     except IntegrityError as e:
         return render_template('student_register.html', message="This email or roll number already exists")
     session['student_id']=u.id
-  #  return render_template('student_home.html',message=u.to_dict(),users=Faculty.query.all())
     return redirect(url_for('student.check_login_student'))
 @mod_student.route('/getall' , methods=['GET'])
 def getall():
@@ -175,7 +174,6 @@ def create_preference():
         db.session.commit()
     except IntegrityError as e:
         return render_template('student_home.html', message="Sorry Request Failed")
-#    return render_template('student_home2.html', student=stud , faculty1=preference1 , faculty2=preference2 , faculty3=preference3 )
     return redirect(url_for('student.check_login_student'))
 
 @mod_student.route('/addfinalta',methods=['POST'])
@@ -215,7 +213,6 @@ def create_finalta():
         db.session.commit()
     except IntegrityError as e:
         return render_template('student_home2.html', message="Request Failed" , student=user , faculty1=preference1 , faculty2=preference2 , faculty3=preference3 ,message1=message1 , message2=message2 , message3=message3)
-#    return render_template('student_final.html',faculty=Faculty.query.filter(Faculty.id==faculty_id).first())   
     return redirect(url_for('student.check_login_student'))
         
 

@@ -10,9 +10,6 @@ class Student(db.Model):
     password = db.Column(db.String(255))
     cgpa = db.Column(db.Float)
     rollno =db.Column(db.Integer,unique = True)
-  #  applications=db.relationship('Application', backref='student' , lazy='courses')
-  #  accepted=db.relationship('AcceptedApplication' , backref='student' , lazy='passedcourses')
-  #  finalta=db.relationship('FinalTA' , backref='student' , lazy = 'coursechoosen')
 
     def __init__(self,name,email,cgpa,rollno,password):
         self.name = name
