@@ -39,73 +39,71 @@
 
 .
     app
-        application
-            __init__.py
-            __init__.pyc
-            models.py
-            models.pyc
-        faculty
-            controllers.py
-            controllers.pyc
-            __init__.py
-            __init__.pyc
-            models.py
-            models.pyc
-        __init__.py
-        __init__.pyc
-        static
-            css
-                vendor
-                    bootstrap.min.css
-            js
-                faculty_login.js
-                faculty_register.js
-                student_login.js
-                student_register.js
-                vendor
-                    authmanger.js
-                    bootstrap.min.js
-                    handlebars.min.js
-                    jquery.min.js
-                    page.js
-        student
-            controllers.py
-            controllers.pyc
-            __init__.py
-            __init__.pyc
-            models.py
-            models.pyc
-        tachair
-            controllers.py
-            controllers.pyc
-            __init__.py
-            __init__.pyc
-            models.py
-            models.pyc
-        templates
-            book.gif
-            error.html
-            faculty_home1.html
-            faculty_login.html
-            faculty_register.html
-            home.html
-            IIIT-H.png
-            login.html
-            student_final.html
-            student_home2.html
-            student_home.html
-            student_login.html
-            student_register.html
-            tachair_home.html
-            tachair_login.html
+ Â Â      application
+ Â Â   Â Â      __init__.py
+ Â Â   Â Â      __init__.pyc
+ Â Â   Â Â      models.py
+ Â Â   Â Â      models.pyc
+ Â Â      faculty
+ Â Â   Â Â      controllers.py
+ Â Â   Â Â      controllers.pyc
+ Â Â   Â Â      __init__.py
+ Â Â   Â Â      __init__.pyc
+ Â Â   Â Â      models.py
+ Â Â   Â Â      models.pyc
+ Â Â      __init__.py
+ Â Â      __init__.pyc
+ Â Â      static
+ Â Â   Â Â      css
+ Â Â   Â Â   Â Â      vendor
+ Â Â   Â Â   Â Â          bootstrap.min.css
+ Â Â   Â Â      js
+ Â Â   Â Â          faculty_login.js
+ Â Â   Â Â          faculty_register.js
+ Â Â   Â Â          student_login.js
+ Â Â   Â Â          student_register.js
+ Â Â   Â Â          vendor
+ Â Â   Â Â              authmanger.js
+ Â Â   Â Â              bootstrap.min.js
+ Â Â   Â Â              handlebars.min.js
+ Â Â   Â Â              jquery.min.js
+ Â Â   Â Â              page.js
+ Â Â      student
+ Â Â   Â Â      controllers.py
+ Â Â   Â Â      controllers.pyc
+ Â Â   Â Â      __init__.py
+ Â Â   Â Â      __init__.pyc
+ Â Â   Â Â      models.py
+ Â Â   Â Â      models.pyc
+ Â Â      tachair
+ Â Â   Â Â      controllers.py
+ Â Â   Â Â      controllers.pyc
+ Â Â   Â Â      __init__.py
+ Â Â   Â Â      __init__.pyc
+ Â Â   Â Â      models.py
+ Â Â   Â Â      models.pyc
+ Â Â      templates
+ Â Â          book.gif
+ Â Â          error.html
+ Â Â          faculty_home1.html
+ Â Â          faculty_login.html
+ Â Â          faculty_register.html
+ Â Â          home.html
+ Â Â          IIIT-H.png
+ Â Â          login.html
+ Â Â          student_final.html
+ Â Â          student_home2.html
+ Â Â          student_home.html
+ Â Â          student_login.html
+ Â Â          student_register.html
+ Â Â          tachair_home.html
+ Â Â          tachair_login.html
     app.db
     a.txt
     config.py
     config.pyc
     databaseSchema.png
     database_schema.txt
-    Documentation.org
-    #main.org#
     main.org
     README.md
     run.py
