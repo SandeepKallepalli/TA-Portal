@@ -2,15 +2,15 @@ from flask import *
 from sqlalchemy.exc import IntegrityError
 from app import db
 from .models import *
-from app.nomination.models import *
+#from app.nomination.models import *
 from app.student.models import *
 from app.faculty.models import *
-from app.acceptedapplications.models import *
+from app.application.models import *
 from sqlalchemy import *
 
 mod_tachair = Blueprint('tachair', __name__, url_prefix='/tachair')
 
-@mod_tachair.route('/login', methods=['GET'])
+@mod_tachair.route('', methods=['GET'])
 def check_login():
     if 'tachair_id' in session:
         user = Tachair.query.filter(Tachair.id == session['tachair_id']).first()
@@ -28,16 +28,17 @@ def check_login():
                 'coursename':faculti1.course_name,
                 'courseid': faculti1.course_id,
                 }
+            king1=FinalTA.query.filter(and_(FinalTA.student_id == student1.id,FinalTA.faculty_id == faculti1.id )).all()
             if king == []:
-                alls.append(dicts)
-
+                if king1 == []:
+                    alls.append(dicts)
         return render_template('tachair_home.html', user = user , alls = alls)
 
     return render_template('tachair_login.html' , message = "please login first")
 
 
 
-@mod_tachair.route('/login', methods=['POST'])
+@mod_tachair.route('', methods=['POST'])
 def login():
     try:
         email = request.form['email']
@@ -62,15 +63,19 @@ def login():
                 'coursename':faculti1.course_name,
                 'courseid': faculti1.course_id,
                 }
+    
+        king1=FinalTA.query.filter(and_(FinalTA.student_id == student1.id,FinalTA.faculty_id == faculti1.id )).all()
         if king == []:
-            alls.append(dicts)
+            if king1 == []:
+                alls.append(dicts)
     return render_template('tachair_home.html' , user = user , alls = alls)
 
 
 @mod_tachair.route('/logout', methods=['POST'])
 def logout():
-    session.pop('tachair_id')
-    return render_template('tachair_login.html')
+    if 'tachair_id' in session:
+        session.pop('tachair_id')
+    return render_template('home.html')
 
 @mod_tachair.route('/register' , methods=['POST'])
 def regester():
@@ -119,7 +124,8 @@ def acc():
                 }
             if king == []:
                 alls.append(dicts)
-        return render_template('tachair_home.html', alls =alls , user = user)
+        #return render_template('tachair_home.html', alls =alls , user = user)
+        return redirect(url_for('tachair.check_login'))
     except:
         return render_template('tachair_login.html' , message="sorry for inconvineance please login again and try")
         

@@ -9,6 +9,9 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
+input[type="text"] {
+    border:0
+}
 body {margin:0;}
 
 .topnav {
@@ -40,7 +43,7 @@ body {margin:0;}
    text-align:center;	
 }
 table {
-    width:60%;
+    width:100%;
 }
 table, th, td {
     border: 1px solid black;
@@ -48,7 +51,7 @@ table, th, td {
 }
 th, td {
     padding: 5px;
-    text-align: left;
+    text-align: center;
 }
 table tr:nth-child(even) {
     background-color: #eee;
@@ -163,10 +166,10 @@ table#t01 th {
 <tr>
 <td>preference-3</td>
 <td>{{ faculty3.course_name }}</td>
-<td>{{ faculty3.name }}</td>
 {% if message3=="Accepted" %}
 <form method="POST" action="/student/addfinalta">
     <td><input type="text" value="{{ faculty3.course_id }}" name="faculty_id" readonly></td>
+    <td>{{ faculty3.name }}</td>
     <td>{{ message3 }}</td>
     <td>
         <input type="submit" name="submit" value="Take course" class="btn btn-default">
@@ -174,6 +177,7 @@ table#t01 th {
 </form>
 {% else %}
 <td>{{ faculty3.course_id }} </td>
+<td>{{ faculty3.name }}</td>
 <td>{{ message3 }}</td>
 {% endif %}
 </tr>
@@ -188,7 +192,7 @@ table#t01 th {
 </div>
 
 <div class="container" id="about">
-<h5 class="heads">This portal is copyrighted to IIIH</h5>
+<h5 class="heads">This portal is copyrighted to IIITH</h5>
 </div>
 
 <div id="logout" class="container">
