@@ -1,4 +1,4 @@
-#+TITLE: =TAPORTAL=
+#+TITLE: =TA-PORTAL-1=
 #+AUTHOR: Pradeep.P,Sandeep.K,Harsha.G
 #+SETUPFILE: ../../org-templates/level-2.org
 #+EXCLUDE_TAGS: boilerplate
@@ -24,13 +24,31 @@
 - This project needs to setup linux environament with python , flask modules installed.
 - Please run the command =pip install requirements.txt= in the folder so as to install all modules required for webapplication to run.
 
-** How to start?
-- extract the downloaded zip.Then inside the TA-PORTAL lies our application . There will be file called run.py , run command =python run.py=
-  , this will make the website to be hosted at our local machine.
-- To use  the portal go to the link =http://127.0.0.1:8080/= then you will get our main home page .
-- The command automatically takes care of the database file creation as we have written it in file =config.py= . 
+** How to Deploy and use
+- Follow the below steps to deploy and make https certificate .
+- We are using nginx for deployment.So please ensure that all the requirements for runnning nginx is installed before.
+- run =pip install requirements.txt= .This command will ensure that all the modules required for running the application are installed.
+- Go to the directory TA-PORTAL-1.
+- type the following command
+- =vim /etc/nginx/sites-available/default= and paste the given code block in that file and please make 
+  sure you entered your correct server domain (or IP)
+#+BEGIN_SRC python 
+server {
+    listen 80; 
+    listen 443 ssl;
+    server_name server domain or IP; #(should be IP-address of the host network)
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
-  
+    location / { 
+        include uwsgi_params;
+        uwsgi_pass unix:/home/harsha/TA-Portal-1/TA-Portal-1.sock;
+    }   
+}
+#+END_SRC
+- =uwsgi --ini TA-Portal-1=
+- =sudo server nginx restart= 
+- Go to browser and open the url =https://<server domain or IP(used to host)>=
 * Code
 ** Directory structure
 - This is the directory structure we have used to build the application . 
